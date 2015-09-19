@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*- 
 
-
-
-
-
 #usage: 
 #	count_lines.py filename
 #       count lines of source file
@@ -52,7 +48,7 @@ def divide_lines(fd,ft):
                 if multi_comment == 0:
                     if line[0] == '#':
                         l2 += 1
-                    elif len(line) == 3 and line[0] == '"' and line[1] == '"' and line[2] == '"':
+                    elif len(line) == 3 and line[0] == '"' and line[1] == '"' and line[2] == '"':#multiline comment detection should be refacted
                         l2 += 1
                         multi_comment = 1
                     else:
