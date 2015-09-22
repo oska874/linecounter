@@ -34,22 +34,26 @@ if __name__ == "__main__":
     matchStr = '^(\S)*\.'+ stype + '$'
     stRe = re.compile(matchStr)
 
+    hidedir = '^\.'
+    hideRe = re.compile(hidedir)
 
     l1 = 0
     l2 = 0
     l3 = 0
 
-    fl2 = fnames.next()
     for fn in fnames:
+        print(fn)
         for name in fn[2]:
-            if fn[1] != []:
-                res = stRe.match(fn[0] + "/" +  name)
-                if res:
-                    print(res.group())
-                    aa =count_lines.count_line1(res.group(), stype)
-                    
-                    l1 += aa[0]
-                    l2 += aa[1]
-                    l3 += aa[2]
+            if fn[1] == []:
+                res = stRe.match(fn[0] + "/" + name)
+            else:
+                if os.path.isdir(fn[1][0]) and hideRe.match(fn[1][0]):
+                    res = stRe.match(fn[0] +'/' +name)
+            if res:
+                aa =count_lines.count_line1(res.group(), stype)
+                
+                l1 += aa[0]
+                l2 += aa[1]
+                l3 += aa[2]
         
     print("source %d\ncomment %d\nempty %d\n" % (l1,l2,l3))
