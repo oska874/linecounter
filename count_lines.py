@@ -22,7 +22,7 @@ def divide_lines(fd,ft):
         for line in fd:
 # strips space in line start and end 
             line = line.strip()
-            if len(line) > 1:
+            if len(line) >= 1:
                 if multi_comment == 0:
                     # comment line start from "/*" or single line comment "//"
                     if len(line) >= 2 and line[0] == '/' and line[1] == '*':
