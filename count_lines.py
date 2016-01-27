@@ -8,9 +8,29 @@ import sys,os
 
 def count_line1(fna,stype):
     fd1 = open(fna,'r')
-    ret = divide_lines(fd1,stype)
-    fd1.close()
-    return ret 
+    if stype == 'c':
+        ret  = divide_lines(fd1,'c')
+        print(ret)
+        ret1 = divide_lines(fd1,'S')
+        print(ret1)
+        ret2 = divide_lines(fd1,'h')
+        print(ret2)
+        ret3 = divide_lines(fd1,'cpp')
+        print(ret3)
+        fd1.close()
+        i=0
+        a0=ret[i]+ret1[i] +ret2[i] +ret3[i]
+        i=1
+        a1=ret[i]+ret1[i] +ret2[i] +ret3[i]
+        i=2
+        a2=ret[i]+ret1[i] +ret2[i] +ret3[i]
+        print(a0,a1,a2)
+        return (a0,a1,a2)
+    else:
+        ret4 = divide_lines(fd1,stype)
+        fd1.close()
+
+    return ret4
 
 def divide_lines(fd,ft):
     l1 = 0 # source
@@ -18,7 +38,8 @@ def divide_lines(fd,ft):
     l3 = 0 # empty
 
     multi_comment = 0
-    if ft == 'c' or ft == 'cpp':
+    print("ft "+ft)
+    if ft == 'c' or ft == 'cpp' or ft == 'S' or ft == 'h':
         for line in fd:
 # strips space in line start and end 
             line = line.strip()
@@ -64,7 +85,7 @@ def divide_lines(fd,ft):
     else:
         print("not supported files "+ft)
 
-    print(l1,l2,l3)
+    #print(l1,l2,l3)
     return (l1,l2,l3)
 
 if __name__ == "__main__":
