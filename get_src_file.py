@@ -31,6 +31,8 @@ if __name__ == "__main__":
         exit
 
     fnames = os.walk(dst_dir)
+    if stype == 'c'
+        stype = '[cSh]'
     matchStr = '^(\S)*\.'+ stype + '$'
     stRe = re.compile(matchStr)
 
@@ -41,8 +43,12 @@ if __name__ == "__main__":
     l2 = 0
     l3 = 0
 
+    if stype == '[cSh]':
+        stype = 'c'
+
     for fn in fnames:
-        print(fn)
+        #print(fn)
+        res = 0
         for name in fn[2]:
             if fn[1] == []:
                 res = stRe.match(fn[0] + "/" + name)
@@ -50,10 +56,11 @@ if __name__ == "__main__":
                 if os.path.isdir(fn[1][0]) and hideRe.match(fn[1][0]):
                     res = stRe.match(fn[0] +'/' +name)
             if res:
-                aa =count_lines.count_line1(res.group(), stype)
-                
-                l1 += aa[0]
-                l2 += aa[1]
-                l3 += aa[2]
+                print(res.group())
+                if stype == 'c':
+                    aa =count_lines.count_line1(res.group(), stype)
+                    l1 += aa[0]
+                    l2 += aa[1]
+                    l3 += aa[2]
         
     print("source %d\ncomment %d\nempty %d\n" % (l1,l2,l3))
