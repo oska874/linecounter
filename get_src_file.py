@@ -31,7 +31,7 @@ if __name__ == "__main__":
         exit
 
     fnames = os.walk(dst_dir)
-    if stype == 'c'
+    if stype == 'c':
         stype = '[cSh]'
     matchStr = '^(\S)*\.'+ stype + '$'
     stRe = re.compile(matchStr)

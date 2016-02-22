@@ -48,7 +48,7 @@ def divide_lines(fd,ft):
                     # comment line start from "/*" or single line comment "//"
                     if len(line) >= 2 and line[0] == '/' and line[1] == '*':
                         l2 += 1
-                        multi_comment = 0
+                        multi_comment = 1
                     elif len(line) >= 2 and line[0] == '/' and line[1] == '/':
                         l2 += 1
                     else :
